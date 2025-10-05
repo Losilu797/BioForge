@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Notes</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+  <style>
+    /* Unified Sidebar Styles */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 240px;
+      height: 100vh;
+      background: #1a1f2e;
+      padding: 2rem 0;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+      overflow-y: auto;
+      z-index: 1000;
+    }
+
+    .sidebar-header {
+      padding: 0 1.5rem 1.5rem;
+      border-bottom: 1px solid #2a3042;
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-header h2 {
+      color: #00d4ff;
+      font-size: 1.3rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .sidebar-header p {
+      color: #8b92a7;
+      font-size: 0.85rem;
+    }
+
+    .nav-section {
+      padding: 0 1rem;
+    }
+
+    .nav-section-title {
+      color: #6b7280;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 1rem 0.5rem 0.5rem;
+      font-weight: 600;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 0.9rem 1rem;
+      color: #e0e6ed;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-bottom: 0.4rem;
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover {
+      background: #2a3042;
+      color: #00d4ff;
+      transform: translateX(4px);
+    }
+
+    .nav-link.active {
+      background: linear-gradient(135deg, #00d4ff20, #0088ff20);
+      color: #00d4ff;
+      border-left: 3px solid #00d4ff;
+    }
+
+    .nav-link .icon {
+      margin-right: 0.8rem;
+      font-size: 1.2rem;
+    }
+
+    /* Adjust main content to account for sidebar */
+    body {
+      margin-left: 240px;
+    }
+
+    header {
+      margin-left: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Unified Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <h2>Hackathon 25</h2>
+      <p>Project Navigation</p>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Projects</div>
+
+      <a href="../Home/index.html" class="nav-link">
+        <span class="icon">🏠</span>
+        <span>Home</span>
+      </a>
+      
+      <a href="../AI Research Assistant/index.html" class="nav-link">
+        <span class="icon">🤖</span>
+        <span>AI Research Assistant</span>
+      </a>
+
+      <a href="index.html" class="nav-link active">
+        <span class="icon">📊</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="../Knowledge Graph/index.html" class="nav-link">
+        <span class="icon">🕸️</span>
+        <span>Knowledge Graph</span>
+      </a>
+    </div>
+
+    <div class="nav-section" style="margin-top: 2rem;">
+      <div class="nav-section-title">Resources</div>
+      
+      <a href="../quick-notes/index.html" class="nav-link">
+        <span class="icon">📝</span>
+        <span>Quick Notes</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Notes Section -->
+  <header>
+    <h1>Quick Notes</h1>
+    <div>
+      <button class="add-note-btn" onclick="openNoteDialog()">+ Add Note</button>
+      <button id="themeToggleBtn" class="theme-toggle-btn">🌙</button>
+    </div>
+  </header>
+
+  <main id="notesContainer" class="notes-grid">
+  </main>
+
+  <dialog id="noteDialog">
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <h2 class="dialog-title" id="dialogTitle">Add New Note</h2>
+        <button class="close-btn" onclick="closeNoteDialog()">x</button>
+      </div>
+
+      <form id="noteForm">
+        <div class="form-group">
+          <label for="noteTitle" class="form-label">Title</label>
+          <input type="text" id="noteTitle" class="form-input" placeholder="Enter note title..." required>
+        </div>
+        
+        <div class="form-group">
+          <label for="noteContent" class="form-label">Content</label>
+          <textarea id="noteContent" class="form-textarea" placeholder="Write your note here..." required></textarea>
+        </div>
+
+        <div class="dialog-actions">
+          <button type="button" class="cancel-btn" onclick="closeNoteDialog()">Cancel</button>
+          <button type="submit" class="save-btn">Save Note</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+</body>
+</html>
